@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">버튼</button>
+</body>
+<script>
+    var 어쩌구 = {};
+
+    // 오브젝트 생성 기계 : constructor
+    function 기계 () {
+        this.이름 = 'Kim';
+        // 함수로 호출하면 window, 생성자로 호출하면 오브젝트
+        console.log('this > ', this);
+    }
+
+    var 오브젝트 = new 기계(); // cunstructor 호출
+    기계(); // 함수 호출
+
+    document.getElementById('button').addEventListener('click', function(e) {
+        // 이벤트리스너 안에서는 currentTarget 과 동일하다고 생각
+        console.log('this > ', this);
+
+        // 콜백함수에서는?
+        var array = [1, 2, 3];
+        array.forEach(function(data) {
+            console.log('data > ', data);
+            // window
+            console.log('forEach 안에서의 this > ', this);
+        });
+    })
+
+    var object = {
+        이름들: ['김', '이', '박'],
+        함수: function () {
+            console.log('오브젝트 안에서의 this > ', this)
+            // window (일반함수에서는 window 출력)
+            object.이름들.forEach(function () {
+                console.log('object 안에서의 forEach 반복문 함수 안의 this > ', this);
+            })
+            // this = 오브젝트
+            // arrow function 의 특징: 내부 this 값을 변화시키지 않음
+            // 옛날에는 bind, call 을 이용했었음
+            object.이름들.forEach(() => {
+                console.log('object 안에서의 forEach 반복문 함수 안의 this (arrow function) > ', this);
+            })
+        }
+    }
+
+    object.함수();
+
+</script>
+</html>
