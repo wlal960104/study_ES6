@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+  // 'use strict'; // strict mode
+  // 그냥 this 를 쓰면 ? window
+  // 함수안의 this 를 쓰면? window
+  // window 안에 자바스크립트 기본 함수들이 있음 (기본 함수들 수납공간)
+  // use strict 를 쓰면 함수안의 this 는 undefined
+  console.log('this > ', this);
+  function 함수 () {
+    console.log('함수 안의 this > ', this); // window, strict mode 에서는 undefined
+  }
+
+  함수();
+
+  // 오브젝트 내의 함수(= 메소드)에서 this를 쓰면?
+  var obj = {
+    data : 'kim',
+    함수 : function () {
+      console.log(this);
+    }
+  }
+
+  obj.함수();
+
+</script>

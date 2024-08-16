@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <button id="button">버튼입니다.</button>
+</body>
+
+<script>
+  // 1. 간단한 메소드 만들기
+  var 사람 = {
+    name : '손흥민',
+    sayHi : () => {
+      console.log('this > ', this); // window
+      console.log(사람);
+
+      console.log(`안녕 나는 ${사람.name}`);
+    }
+  }
+
+  // 2. 오브젝트 내의 데이터를 전부 더해주는 메소드 만들기
+  var 자료 = {
+    data: [1, 2, 3, 4, 5],
+    전부더하기 : () => {
+      let result = 0;
+      자료.data.forEach((a) => result = result + a);
+      console.log('result > ', result);
+    }
+  }
+
+  let res = 0;
+  var 전부더하기2 = () => {자료.data.forEach(a => res = res + a)}
+  전부더하기2();
+
+  // 3. setTimeout
+  // document.getElementById('button').addEventListener('click', (e) => {
+  //   // console.log(e.currentTarget)
+  //   // console.log(e.currentTarget.innerHTML); // 버튼입니다.
+  //   let innerHtml = e.currentTarget.innerHTML;
+  //   let print = () => { console.log(innerHtml) }
+  //   setTimeout(print, 1000);
+  // })
+
+  // 정답
+  document.getElementById('button').addEventListener('click', function () {
+    setTimeout(() => {console.log(this.innerHTML)}, 1000)
+  })
+
+
+</script>
+</html>
