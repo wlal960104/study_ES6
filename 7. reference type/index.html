@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reference type</title>
+</head>
+<body>
+
+</body>
+<script>
+  // 그냥 문자와 숫자는 Primitive data type
+  //  - 변수에 값이 그대로 저장됨
+  // Array, Object는 변수에 값이 저장이 되지 않음
+  //  - 변수에 reference 가 저장됨
+  //  - 그래서 array, object 함부로 복사하면 큰일남
+  //  - 새로 중괄호를 할당할 때마다 새로운 화살표(새로운 메모리 공간 주소 할당됨)
+
+  var 이름1 = '김';
+  var 이름2 = 이름1;
+  이름2 = '이';
+
+  // 이름3 에는 {name: '김'} 이 저장되는 것이 아니라 {name: '김'}이 저기 있어요 라는 화살표(reference)가 저장된다.
+  var 이름3 = {name: '김'}
+  var 이름4 = 이름3;
+  이름3.name = '박'
+
+  // array, object 를 복사하고 싶으면?
+  // - object 복사 기계
+
+  var name1 = {name: '김'}
+  var name2 = {name: '김'}
+
+  console.log(name1 == name2) // false (화살표가 다름)
+
+  var name3 = {name: '박'}
+  function 변경(obj) {
+    // 파라미터는 변수생성 & 할당과 똑같다.
+    // 실은 var obj 가 생성된거임
+    obj = {name : 'park'} // 오브젝트 재할당 = 새로운 화살표가 생성되어 obj 와 name3은 다른 객체가 됨
+  }
+
+  변경(name3); // '박' 으로 출력
+
+</script>
+</html>
