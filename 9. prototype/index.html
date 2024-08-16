@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype</title>
+</head>
+<body>
+
+</body>
+<script>
+  /* 상속을 구현할 수 있는 또 하나의 문법 : prototype
+  * prototype 은 유전자(직역: 원형)이다.
+  * 기계(constructor)를 만들면 prototype 이라는 공간이 자동으로 생긴다.
+  * prototype에 값을 추가하면 모든 자식들이 물려받기 가능
+  *
+  * < prototype의 동작원리 >
+  * 학생1에는 gender 가 없는데 왜 학생1.gender 가 출력이 될까?
+  * => 그냥 자바스크립트가 그렇게 코드를 실행한다.
+  * => 학생1에 gender 가 없으면 부모 유전자에서 찾는다.
+  *
+  * 학생1.name; 이라고 코드를 작성하면,
+  * 1) 학생1이 직접 name 을 가지고 있는가? 그럼 출력! 없으면 2번으로 go
+  * 2) 그럼 학생1의 부모 유전자가 gender를 가지고 있는가? (기계.prototype 탐색) 그럼 출력!
+  *
+  * [1, 2, 3].push(), 학생1.toString() / 이런건 어떻게 실행되는 거지? 내장 함수는 어떻게 동작하는 걸까?
+  * 1) 학생1이 toSring()을 가지고 있는가? 학생1에는 toString 이 없다.
+  * 2) 그럼 부모 유전자에 있는가? 없다면
+  * 3) 부모의 부모 유전자에 있는가? ... 계속 반복
+  * 학생의 부모의 부모의 부모.... 어딘가에 toSring 이 있다.
+  *
+  * */
+  function 기계(name, age) {
+      // this 는 새로 생성되는 object 를 뜻한다.
+      this.name = name;
+      this.age = age;
+      this.sayHi = function () {
+          console.log('sayHi 안에서의 this >', this);
+          console.log(`안녕하세요. 제 이름은 ${this.name} 입니다.`);
+      }
+      console.log('this >> ', this);
+  }
+
+  기계.prototype.gender = '남';
+
+  // var student = new 기계();
+  // 기계(); // 이 때는 함수 호출이어서 window 출력
+  var 학생1 = new 기계('kim', 20); // 생성자 함수 호출이어서 object 출력
+  var 학생2 = new 기계('park', 10);
+
+  var arr = [1, 2, 3];
+  // Array 라는 기계로 새로운 인스턴스를 생성
+  var arr = new Array(1, 2, 3); // 실제 array 가 만들어지는 방식. new 를 쓰니까 생성자함수!
+  console.log(Array.prototype); // 여기 안에 array 관련 내장함수 포함되어 있다
+
+  var obj = {name: 'kim'}
+  var obj = new Object(); // 실제 Object 가 만들어지는 방식
+  console.log(Object.prototype);
+
+
+
+
+</script>
+</html>

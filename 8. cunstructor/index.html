@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>constructor</title>
+</head>
+<body>
+
+</body>
+
+<script>
+  // 객체지향1. Object 생성기계인 constructor 을 만들어 써보자
+  // cunstructor 문법의 용도 : object 를 마구 복사하고 싶을 때 사용
+  // 예시: 학생 출석부를 만들어보자
+  // 비슷한 학생 object를 여러 개 만들려면? constructor 라는 object 생성 기계를 만들자
+
+
+  // var 학생1 = {
+  //     name: 'kim',
+  //     age : 15,
+  //     sayHi () {
+  //         console.log('this > ', this);
+  //         console.log(`안녕하세요. 제 이름은 ${this.name} 입니다.`);
+  //     }
+  // }
+
+
+  // 보통 생성자 함수는 앞글자 *대문자*로 표시
+  function 기계(name, age) {
+      // this 는 새로 생성되는 object 를 뜻한다.
+      this.name = name;
+      this.age = age;
+      this.sayHi = function () {
+          console.log('sayHi 안에서의 this >', this);
+          console.log(`안녕하세요. 제 이름은 ${this.name} 입니다.`);
+      }
+      console.log('this >> ', this);
+  }
+
+  // var student = new 기계();
+  // 기계(); // 이 때는 함수 호출이어서 window 출력
+  var 학생1 = new 기계('kim', 20); // 생성자 함수 호출이어서 object 출력
+  var 학생2 = new 기계('park', 10);
+
+  // 함수 형식으로 new 로 선언하면 constructor(생성자) / 전문용어로 '상속' 이라고 한다.
+  // this : 기계에서 새로 생성되는 object = instance
+  // 기계 : 부모, 학생 : 자식
+</script>
+</html>
