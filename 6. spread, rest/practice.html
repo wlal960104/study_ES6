@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  // 1. ['김', '밥', 1, 2, 3]
+  // 2. 'you'
+
+  var a = [1, 2, 3];
+  var b = ['you', 'are'];
+  var c = function (a, b) {
+    console.log([[...a], ...[...b]][1])
+  }
+  c(a, b);
+
+  // 3. 9
+
+  // 4. NaN? X - 정답: 15
+
+  // 5. array를 만들어주는 함수를 제작
+  function arr (...rest) {
+      console.log('rest > ', rest);
+      return rest;
+  }
+
+  var newArr = arr(1, 2, 3, 4, 5, 6, 7, 8, 9);
+  console.log(newArr);
+
+
+  // 6. 최댓값 구하기
+  // Math.max(5,6,4,3)
+  var numbers = [2,3,4,5,6,1,3,2,5,5,4,6,7];
+  console.log(Math.max(...numbers));
+
+  // 7. 글자를 알파벳 순으로 정렬해주는 함수 만들기
+  function 정렬([...rest]) {
+      console.log('rest > ', rest);
+        var sortArr = rest.sort();
+      console.log('sortArr > ', sortArr);
+  }
+
+  정렬('bear');
+
+  // 7번 정답
+   function 정렬2(글자) {
+      console.log('7번 정답 : ', ...[...글자].sort());
+  }
+
+  정렬2('bear');
+
+  // 8. 데이터마이닝 기능 만들기
+  // function 글자세기([...rest]) {
+  //     console.log('글자세기 rest > ', rest)
+  //     var obj = {};
+  //       var num_a = 0, num_b = 0, num_c = 0;
+  //     rest.forEach((data)=> {
+  //         if (data === 'a' ) {
+  //             num_a++
+  //         }
+  //         if (data === 'b' ) {
+  //             num_b++
+  //         }
+  //         if (data === 'c' ) {
+  //             num_c++
+  //         }
+  //     })
+  //
+  //     obj.a = num_a;
+  //     obj.b = num_b;
+  //     obj.c = num_c;
+  //     console.log(obj)
+  //
+  //     return obj;
+  // }
+  //
+  // 글자세기('aacbbb');
+
+  // 8번 정답
+  function 글자세기 (글자) {
+      var 결과 = {};
+      [...글자].forEach(function(data) {
+          console.log('data > ', data);
+          console.log('결과 >', 결과);
+          if (결과[data] > 0) {
+              결과[data]++;
+          } else {
+              결과[data] = 1;
+          }
+      })
+      console.log('결과 >>', 결과);
+  }
+
+  글자세기('aacbbbbbbbeeeeeeeee');
+
+
+
+</script>
+</html>
