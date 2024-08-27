@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Class</title>
+</head>
+<body>
+
+</body>
+<script>
+  // constructor 를 만드는 신문법 ! => Class (ES6)
+  // 객체 지향 문법을 쓰는 이유?
+  // 1. object 여러개 만들어 쓰려고 하는 것
+  // 2.
+
+  class 부모 {
+    constructor(name) {
+      this.name = name;
+      // 함수 만드는 방법 1) constructor 에 추가
+      // - 자식이 직접 함수를 가짐
+      this.sayHi = function () {
+        console.log('안녕하세요');
+      }
+    }
+    // 함수 만드는 방법 2) constructor 밖
+    // - 여기에서 함수 정의하면 자식 오브젝트에 추가되지 않음
+    // - 부모의 prototype 에 추가됨
+    sayBye() {
+      console.log('안녕히가세요');
+    }
+  }
+
+  부모.prototype.sayHello = function() {
+    console.log('안녕하십니까');
+  }
+
+  var 자식 = new 부모('KIM');
+
+  // Object.getPrototypeOf(자식); // 자식.__prototype__ 과 동일. 좀 더 보기 편하게 출력해 줌
+
+
+
+</script>
+</html>

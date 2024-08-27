@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>prototype - practice</title>
+</head>
+<body>
+
+</body>
+<script>
+
+  // 0번
+  function makeStudent(name, age) {
+    this.name = name;
+    this.age = age;
+    this.sayHi = function () {
+      console.log(`안녕 나는 ${this.name} 이야`)
+    }
+  }
+
+  var student1 = new makeStudent('Kim', 20);
+  var student2 = new makeStudent('Park', 21);
+  var student3 = new makeStudent('Lee', 22);
+
+  // 1번
+  // 'Kim'
+
+  // 2번
+  // 화살표 함수를 써서 this 가 바인딩이 제대로 되지 않았기 때문이다. this 는 window 로 추정..
+
+  // 3번
+  // Array 라는 생성자함수에 추가하면 된다.
+  Array.prototype.remove3 = function () {
+    console.log('3을 삭제해 주세요');
+  }
+
+
+</script>
+</html>

@@ -30,6 +30,7 @@
   *
   * */
   function 기계(name, age) {
+      // console.log(this);
       // this 는 새로 생성되는 object 를 뜻한다.
       this.name = name;
       this.age = age;
@@ -55,6 +56,19 @@
   var obj = {name: 'kim'}
   var obj = new Object(); // 실제 Object 가 만들어지는 방식
   console.log(Object.prototype);
+
+  /* < prototype 의 특징 >
+  *  1. prototype 은 함수에만 몰래 생성된다.
+  *    - arr 에는 prototype X. Array에는 prototype O
+  *  2. 내 부모 유전자(부모의 prototype)를 검사하고 싶다면 __proto__
+  *  3. __proto__를 이용해 부모님 강제 등록하기
+  *
+  *
+  * */
+
+  var 부모 = {name: 'Kim'};
+  var 자식 = {};
+  자식.__proto__ = 부모; // 나의 부모 유전자는 이걸로 해주세요~ (상속관계 부여), 실제로 쓰진 않음
 
 
 

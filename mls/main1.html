@@ -16,21 +16,30 @@
 <script>
 
     document.getElementById("button").addEventListener("click", () => {
-        window.rowData = document.getElementById("text").value;
+        window.rowData = document.getElementById("text").value; // textarea 에 들어가는 데이터의 값
         rowData = JSON.parse(rowData);
-        console.log('rowData >', rowData);
         console.log(rowData.data);
 
-        var list = rowData.data.componentLst;
-        var res = [];
+        var list = rowData.data.componentLst; // 바꿀곳 1번
+        var res = []; // 여기에 push
 
-        list.forEach((el) => {
+        // prodId만 담음
+        list.forEach((el, i) => {
             res.push(el.prdId);
+            // 확인용 로그
+             if ( (i === 0) || (i === 1) || (i === 2) || (i === 9) ) {
+              console.log(el.prdNm);
+            }
         })
 
-        var r = '';
-        var length = 10;
+        var r = ''; // 최종 노출될 로그
+        var length = 10; // 내가 출력할 데이터 길이, 바꿀곳 2번
+
+        // 내가 바꿔야할 것
+        //
+
         res.forEach((el, i) => {
+            console.log(el);
             if (i < 10) {
                 if (i === length - 1) {
                 r = r + el

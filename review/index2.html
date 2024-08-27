@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    function MakeProd (name, price) {
+        this.name = name;
+        this.price = price;
+        this.부가세 = function() {
+            console.log('부가세는 ' + this.price * 0.1 + '원 입니다.');
+        }
+    }
+
+    MakeProd.prototype.quantity = 100; // 프로토타입
+    var prod1 = new MakeProd('shirt', 50000);
+    var prod2 = new MakeProd('pants', 60000);
+
+</script>
+</html>

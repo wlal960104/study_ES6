@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getter, setter</title>
+</head>
+<body>
+</body>
+<script>
+    // 함수를 만들어 object 데이러를 다루는 이유
+    // 1. object 자료가 복잡할 때 이득
+    // 2. object 자료 수정 시 편리
+    // => 데이터를 꺼내거나/수정하거나 그럴 때 편리 & 실수 방지 & 관리 가능
+    // set 은 떼이터 변경하는 함수에 : 파라미터가 1개 있어야 함
+    // get 은 데이터 꺼내쓰는 함수에 : 리턴이 꼭 있어야 함 / 파라미터가 없어야 함
+    var 사람 = {
+        name: 'Park',
+        age: 30,
+        // 내년 나이 리턴
+        // getter
+        get nextAge() {
+            return this.age + 1
+        },
+        // setter
+        // set 키워드 쓰면 사람.setAge = 20; 형태로 가능 (기존에는 사람.setAge(20) )
+        // 소괄호 없이 쓸 수 있음 (소괄호 붙이면 오히려 에러)
+        set setAge(나이) {
+            // 문자 입력해도 숫자로 바꿔줌
+            this.age = parseInt(나이);
+        }
+    }
+
+    // age 라는 자료를 꺼내고 싶으면? (유행하는 잡기술)
+
+    사람.setAge = '20';
+
+    // class 에서도 getter, setter 사용 가능
+    class 사람2 {
+        constructor() {
+            this.name = '김';
+            this.age = 20;
+        }
+        // prototype 함수들에도 get/set 가능
+        get nextAge () {
+            return this.age + 1;
+        }
+        set setAge(나이) {
+            this.age = 나이;
+        }
+    }
+
+    var person1 = new 사람2();
+</script>
+</html>

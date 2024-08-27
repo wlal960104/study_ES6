@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>발견 3</title>
+    <title>카테고리1</title> <!-- 여기 변경 추천 -->
 </head>
 <body>
     <div>
@@ -18,34 +18,34 @@
     document.getElementById("button").addEventListener("click", () => {
         window.rowData = document.getElementById("text").value;
         rowData = JSON.parse(rowData);
-        console.log('rowData >', rowData);
         console.log(rowData.data);
 
         var list = rowData.data.componentLst;
         var res = [];
 
+      console.log('list >', list);
+
         list.forEach((el, i) => {
             res.push(el.prdId);
-            if ( (i === 3) || (i === 4) ) {
+            // 그냥 확인용 로그 (상품명)
+            if ( (i === 0) || (i === 1) ) {
               console.log(el.prdNm);
             }
         })
 
         var r = '';
-        var length = 5;
+        var length = 10; // 여기만 바꿔줘도 될듯?
         res.forEach((el, i) => {
-            if (i < 5) {
+            if (i < length) {
                 if (i === length - 1) {
-                r = r + el
-            } else {
-                r = r + el + '\n';
-            }
+                    r = r + el
+                } else {
+                    r = r + el + '\n';
+                }
             }
         })
 
         console.log(r);
-
-
     })
 
 

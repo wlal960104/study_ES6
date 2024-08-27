@@ -5,111 +5,50 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>최근 본 상품</title>
+    <title>Document</title>
 </head>
 <body>
-    <div>
-        <textarea id="text" style="height: 300px; width: 300px"></textarea>
-        <button id="button">확인</button>
-    </div>
+    <button id="button">버튼</button>
+
 </body>
 <script>
+    // 5.
+   function arr (...params) {
+       return params
+   }
 
-    document.getElementById("button").addEventListener("click", () => {
-        var rowData = document.getElementById("text").value;
-        rowData = JSON.parse(rowData);
-        console.log('rowData >', rowData);
-        console.log(rowData.data);
+   var newArr = arr(1, 2, 3, 4, 5);
+   console.log(newArr)
 
-        var list = rowData.data.prdList;
-        var res = [];
+    // 6.
+    var numbers = [2,3,4,5,6,1,3,2,5,5,4,6,7];
+    console.log(Math.max(...numbers))
 
-        list.forEach((el) => {
-            res.push(el.prdId);
-        })
+    // 7.
+    function 정렬(params) {
+        console.log([...params].sort());
 
-        var r = '';
-        var length = list.length;
-        res.forEach((el, i) => {
-            if (i === length - 1) {
-                r = r + el
+    }
+
+    정렬('bear');
+
+    // 8.
+    function 글자세기(params) {
+        console.log([...params]);
+        var arr = [...params];
+        var obj = {};
+
+        arr.forEach((data)=>{
+            if ( obj[data] > 0 ) {
+                obj[data]++
             } else {
-                r = r + el + '\n';
+                obj[data] = 1
             }
         })
-
-        console.log(r);
-
-    })
-
-
-    // var rowData =
-    //     {
-    //     "status": 200,
-    //     "statusText": "OK",
-    //     "data": {
-    //         "totalCnt": 3,
-    //         "prdList": [
-    //             {
-    //                 "prdId": "PR00000274",
-    //                 "prdNm": "해피독TV",
-    //                 "prdBnfNm": "해피독TV 이용권",
-    //                 "prdImg": "FOBO/PRD/PRDDSP/20240110/thumb_해피독TV.png",
-    //                 "prdFprcAmt": "0",
-    //                 "prdSprcAmt": "8360",
-    //                 "discntRate": "0",
-    //                 "scbPayTrmCd": "03",
-    //                 "sllStCd": "02",
-    //                 "likeYn": "N",
-    //                 "prdCustTypCd": "A01",
-    //                 "fstScbDcYn": "Y",
-    //                 "fstScbDcPrc": "100",
-    //                 "plusDcYn": "N",
-    //                 "plusDcPrc": null,
-    //                 "stkYn": "Y"
-    //             },
-    //             {
-    //                 "prdId": "PR00000228",
-    //                 "prdNm": "파리바게뜨 할인",
-    //                 "prdBnfNm": "파리바게뜨 1,000원당 300원 할인",
-    //                 "prdImg": "FOBO/PRD/PRDDSP/20240110/thumb_파리바게트.png",
-    //                 "prdFprcAmt": "0",
-    //                 "prdSprcAmt": "7900",
-    //                 "discntRate": "0",
-    //                 "scbPayTrmCd": "03",
-    //                 "sllStCd": "02",
-    //                 "likeYn": "N",
-    //                 "prdCustTypCd": "B02",
-    //                 "fstScbDcYn": "Y",
-    //                 "fstScbDcPrc": "1000",
-    //                 "plusDcYn": "N",
-    //                 "plusDcPrc": null,
-    //                 "stkYn": "Y"
-    //             },
-    //             {
-    //                 "prdId": "PR00000344",
-    //                 "prdNm": "CU 할인",
-    //                 "prdBnfNm": "CU 매장 구매 1,000원당 300원 할인",
-    //                 "prdImg": "FOBO/PRD/PRDDSP/20240509/thumb_CU_240422-fQLQdqHUgeyAyj7.png",
-    //                 "prdFprcAmt": "0",
-    //                 "prdSprcAmt": "4900",
-    //                 "discntRate": "0",
-    //                 "scbPayTrmCd": "03",
-    //                 "sllStCd": "02",
-    //                 "likeYn": "N",
-    //                 "prdCustTypCd": "A01",
-    //                 "fstScbDcYn": "N",
-    //                 "fstScbDcPrc": null,
-    //                 "plusDcYn": "Y",
-    //                 "plusDcPrc": "1800",
-    //                 "stkYn": "Y"
-    //             }
-    //         ]
-    //     }
-    // }
-
-
-
+        console.log(obj)
+    }
+    글자세기('aaacbbb');
 
 </script>
+
 </html>

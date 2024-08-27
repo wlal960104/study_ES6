@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>발견 3</title>
+</head>
+<body>
+    <div>
+        <textarea id="text" style="height: 300px; width: 300px"></textarea>
+        <button id="button">확인</button>
+    </div>
+</body>
+<script>
+
+    document.getElementById("button").addEventListener("click", () => {
+        window.rowData = document.getElementById("text").value;
+        rowData = JSON.parse(rowData);
+        console.log(rowData.data);
+
+        var list = rowData.data.componentLst;
+        var res = [];
+
+        list.forEach((el, i) => {
+            res.push(el.prdId);
+            if ( (i === 3) || (i === 4) ) {
+              console.log(el.prdNm);
+            }
+        })
+
+        var r = '';
+        var length = 5;
+        res.forEach((el, i) => {
+            if (i < length) {
+                if (i === length - 1) {
+                    r = r + el
+                } else {
+                    r = r + el + '\n';
+                }
+            }
+        })
+
+        console.log(r);
+
+
+    })
+
+
+
+
+
+</script>
+</html>
